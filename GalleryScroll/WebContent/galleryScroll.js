@@ -13,13 +13,14 @@ function GalleryScroll(option){
 		$(this.ele).mouseleave(this.startScroll);
 	};
 	this.startScroll=function(){
+		_that.intervalId=null;
 		_that.intervalId=setInterval(function(){
 			$(_that.ele).find(".contentbox").css("margin-left",_that.leftOffset--);
 			if(-(_that.leftOffset) > $(_that.ele).find('.item').outerWidth()){
 				console.log(_that.leftOffset,$(_that.ele).find('.item').outerWidth());
 				_that.trimItem($(_that.ele).find('.item:first-child'));
 			}
-		}, 10);
+		}, 30);
 	};
 	this.stopScroll=function(){
 		clearInterval(_that.intervalId);
